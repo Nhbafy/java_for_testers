@@ -1,5 +1,9 @@
 public record Triangle (double sideA,double sideB, double sideC) {
 
+    public Triangle {
+        if (sideA<=0 || sideB <=0 || sideC<=0 || sideA+sideB<sideC || sideB+sideC<sideA || sideC+sideA<sideB) throw new IllegalArgumentException("Некорректное значение стороны треугольника");
+    }
+
     public double trianglePerimeter()
     {
         return this.sideA+this.sideB+this.sideC;
