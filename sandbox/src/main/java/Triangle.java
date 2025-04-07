@@ -3,7 +3,8 @@ import java.util.Objects;
 public record Triangle (double sideA, double sideB, double sideC) {
 
     public Triangle {
-        if (sideA<=0 || sideB <=0 || sideC<=0 || sideA+sideB<sideC || sideB+sideC<sideA || sideC+sideA<sideB) throw new IllegalArgumentException("Некорректное значение стороны треугольника");
+        if (sideA<=0 || sideB <=0 || sideC<=0) throw new IllegalArgumentException("Значение мтороны не может быть отрицательным");
+        else if (sideA+sideB<sideC || sideB+sideC<sideA || sideC+sideA<sideB) throw new IllegalArgumentException("Значение одной стороны треугольника не может быть меньше суммы двух других");
     }
 
     @Override
