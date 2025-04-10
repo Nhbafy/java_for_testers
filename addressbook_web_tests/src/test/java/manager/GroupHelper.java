@@ -3,24 +3,26 @@ package manager;
 import model.GroupData;
 import org.openqa.selenium.By;
 
-public class GroupHelper {
+public class GroupHelper extends HelperBase {
     private final ApplicationManager manager;
+
     public GroupHelper(ApplicationManager manager)
     {
+        super(manager);
         this.manager=manager;
     }
 
     public void openGroupPage() {
         if (!manager.isElementPresent(By.name("new"))) {
-            manager.driver.findElement(By.linkText("groups")).click();
+            clickElementByLinkText("groups");
         }
     }
 
     public void removeGroup() {
         openGroupPage();
-        manager.driver.findElement(By.name("selected[]")).click();
-        manager.driver.findElement(By.name("delete")).click();
-        manager.driver.findElement(By.linkText("group page")).click();
+        clickElementByName("selected[]");
+        clickElementByName("delete");
+        clickElementByLinkText("group page");
     }
 
     public boolean isGroupPresent() {
@@ -28,16 +30,17 @@ public class GroupHelper {
         return manager.isElementPresent(By.name("selected[]"));
     }
 
-    public void CreateGroup(GroupData group) {
+    public void createGroup(GroupData group) {
         openGroupPage();
-        manager.driver.findElement(By.name("new")).click();
-        manager.driver.findElement(By.name("group_name")).click();
-        manager.driver.findElement(By.name("group_name")).sendKeys(group.name());
-        manager.driver.findElement(By.name("group_header")).click();
-        manager.driver.findElement(By.name("group_header")).sendKeys(group.header());
-        manager.driver.findElement(By.name("group_footer")).click();
-        manager.driver.findElement(By.name("group_footer")).sendKeys(group.footer());
-        manager.driver.findElement(By.name("submit")).click();
-        manager.driver.findElement(By.linkText("group page")).click();
+        clickElementByName("new");
+        clickElementByName("group_name");
+        sendKeys("group_name", group.name());
+        clickElementByName("group_header");
+        sendKeys("group_header", group.header());
+        clickElementByName("group_footer");
+        sendKeys("group_footer", group.footer());
+        clickElementByName("submit");
+        clickElementByLinkText("group page");
     }
+
 }
