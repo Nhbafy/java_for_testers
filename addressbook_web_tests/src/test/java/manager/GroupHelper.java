@@ -4,12 +4,11 @@ import model.GroupData;
 import org.openqa.selenium.By;
 
 public class GroupHelper extends HelperBase {
-    private final ApplicationManager manager;
 
     public GroupHelper(ApplicationManager manager)
     {
         super(manager);
-        this.manager=manager;
+        super.manager=manager;
     }
 
     public void openGroupPage() {

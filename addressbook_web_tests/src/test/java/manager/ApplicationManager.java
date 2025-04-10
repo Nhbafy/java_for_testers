@@ -10,8 +10,8 @@ public class ApplicationManager {
     protected  WebDriver driver;
     private LoginHelper session;
     private GroupHelper groups;
-
     private HelperBase helperBase;
+    private ContactHelper contactHelper;
 
     public void init() {
         if (driver == null) {
@@ -43,6 +43,13 @@ public class ApplicationManager {
             helperBase=new HelperBase(this);
         }
         return helperBase;
+    }
+
+    public ContactHelper contactHelper(){
+        if (contactHelper==null){
+            contactHelper=new ContactHelper(this);
+        }
+        return contactHelper;
     }
 
     protected boolean isElementPresent(By locator) {
