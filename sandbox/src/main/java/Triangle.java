@@ -14,17 +14,16 @@ public record Triangle (double sideA, double sideB, double sideC) {
         Triangle triangle = (Triangle) o;
         return Double.compare(triangle.sideA, sideA) == 0 && Double.compare(triangle.sideB, sideB) == 0 && Double.compare(triangle.sideC, sideC) == 0
                 ||
+                Double.compare(triangle.sideA, sideA) == 0 && Double.compare(triangle.sideB, sideC) == 0 && Double.compare(triangle.sideC, sideB) == 0
+                ||
+                Double.compare(triangle.sideA, sideB) == 0 && Double.compare(triangle.sideB, sideA) == 0 && Double.compare(triangle.sideC, sideC) == 0
+                ||
                 Double.compare(triangle.sideA, sideB) == 0 && Double.compare(triangle.sideB, sideC) == 0 && Double.compare(triangle.sideC, sideA) == 0
                 ||
-                Double.compare(triangle.sideB, sideC) == 0 && Double.compare(triangle.sideB, sideA) == 0 && Double.compare(triangle.sideA, sideB) == 0
+                Double.compare(triangle.sideA, sideC) == 0 && Double.compare(triangle.sideB, sideA) == 0 && Double.compare(triangle.sideC, sideB) == 0
                 ||
-                Double.compare(triangle.sideC, sideA) == 0 && Double.compare(triangle.sideA, sideB) == 0 && Double.compare(triangle.sideB, sideC) == 0
-                ||
-                Double.compare(triangle.sideA, sideA) == 0 && Double.compare(triangle.sideB, sideC) == 0
-                ||
-                Double.compare(triangle.sideB, sideB) == 0 && Double.compare(triangle.sideA, sideC) == 0
-                ||
-                Double.compare(triangle.sideC, sideC) == 0 && Double.compare(triangle.sideA, sideB) == 0 ;
+                Double.compare(triangle.sideA, sideC) == 0 && Double.compare(triangle.sideB, sideB) == 0 && Double.compare(triangle.sideC, sideA) == 0;
+
     }
 
     @Override
