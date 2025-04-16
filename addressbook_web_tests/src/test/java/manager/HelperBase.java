@@ -9,19 +9,13 @@ public class HelperBase {
         this.manager = manager;
     }
 
-    protected void clickElementByName(String name) {
-        manager.driver.findElement(By.name(name)).click();
+    protected void clickElementByLocator(By locator) {
+        manager.driver.findElement(locator).click();
     }
 
-    protected void sendKeys(String elementName, String keys) {
-        manager.driver.findElement(By.name(elementName)).sendKeys(keys);
-    }
-
-    protected void clickElementByLinkText(String linkText) {
-        manager.driver.findElement(By.linkText(linkText)).click();
-    }
-
-    protected void clickElementByXpath(String xpathExpression) {
-        manager.driver.findElement(By.xpath(xpathExpression)).click();
+    protected void sendKeys(By locator, String keys) {
+        clickElementByLocator(locator);
+        manager.driver.findElement(locator).clear();
+        manager.driver.findElement(locator).sendKeys(keys);
     }
 }

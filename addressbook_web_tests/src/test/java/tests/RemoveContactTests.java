@@ -1,17 +1,29 @@
 package tests;
 
 import model.ContactData;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RemoveContactTests extends TestBase {
 
     @Test
     public void removeContact() {
-        if (!app.contactHelper().isContactPresent()) {
-            app.contactHelper().createContact(new ContactData().withAddress("address").withFirstName("firstname").withLastName("lastname"));
+        if (!app.contact().isContactPresent()) {
+            app.contact().createContact(new ContactData().withAddress("address").withFirstName("firstname").withLastName("lastname"));
         }
-        app.contactHelper().openHomePage();
-        app.contactHelper().canRemoveContact();
+        app.contact().openHomePage();
+        app.contact().canRemoveContact();
+    }
+
+    @Test
+    void removeAllContacts() {
+        if (!app.contact().isContactPresent()) {
+            app.contact().createContact(new ContactData().withAddress("address").withFirstName("firstname").withLastName("lastname"));
+        }
+        app.contact().openHomePage();
+        app.contact().removeAllContacts();
+        app.contact().openHomePage();
+        Assertions.assertEquals(0, app.contact().getCount());
     }
 
 }
