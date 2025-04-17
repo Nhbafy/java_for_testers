@@ -15,7 +15,6 @@ public class GroupDeletedTest extends TestBase {
         if (app.groups().getCount() == 0) {
             app.groups().createGroup(new GroupData("", "header", "footer", "name"));
         }
-        int groupCount = app.groups().getCount();
         List<GroupData> oldGroups = app.groups().getList();
         var rnd = new Random();
         var index = rnd.nextInt(oldGroups.size());
@@ -30,10 +29,8 @@ public class GroupDeletedTest extends TestBase {
     public void canRemoveAllGroups() {
         if (app.groups().getCount() == 0) {
             app.groups().createGroup(new GroupData("", "header", "footer", "name"));
-            ;
         }
         app.groups().removeAllGroups();
         Assertions.assertEquals(0, app.groups().getCount());
     }
-
 }
