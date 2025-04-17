@@ -100,4 +100,11 @@ public class ContactHelper extends HelperBase {
         }
         return contacts;
     }
+
+    public void modifyContact(ContactData testData,int index) {
+        openHomePage();
+        clickElementByLocator(By.xpath(String.format("//tr[%s]/td[8]",index+2)));
+        sendKeys(By.name("firstname"), testData.firstName());
+        clickElementByLocator(By.name("update"));
+    }
 }
