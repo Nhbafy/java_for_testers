@@ -1,32 +1,24 @@
 package tests;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import model.GroupData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class GroupCreationTests extends TestBase {
-    public static List<GroupData> groupProvider() {
-        List<GroupData> result = new ArrayList<>();
-        for (var name : List.of("Group name", "")) {
-            for (var header : List.of("Group header", "")) {
-                for (var footer : List.of("Group footer", "")) {
-                    result.add(new GroupData().withName(name).withHeader(header).withFooter(footer));
-                }
-                ;
-            }
-        }
-        for (int i = 1; i < 6; i++) {
-            result.add(new GroupData()
-                    .withName(randomString(i * 10))
-                    .withHeader(randomString(i * 10))
-                    .withFooter(randomString(i * 10)));
-        }
-        return result;
+    public static List<GroupData> groupProvider() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        var value = mapper.readValue(new File("groups.json"), new TypeReference<List<GroupData>>() {
+        });
+        return new ArrayList<>(value);
     }
 
 
