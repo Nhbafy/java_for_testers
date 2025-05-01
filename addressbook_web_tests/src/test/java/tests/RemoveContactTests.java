@@ -13,14 +13,14 @@ public class RemoveContactTests extends TestBase {
 
     @Test
     public void removeContact() {
-        if (!app.contact().isContactPresent()) {
-            app.contact().createContact(new ContactData().withAddress("address").withFirstName("firstname").withLastName("lastname"));
+        if (app.hbm().getContactsCount() == 0) {
+            app.hbm().createContact(new ContactData("", "firstname", "address", "lastname"));
         }
-        List<ContactData> oldContacts = app.contact().getList();
+        List<ContactData> oldContacts = app.hbm().getContactsList();
         var rnd = new Random();
         var index = rnd.nextInt(oldContacts.size());
         app.contact().canRemoveContact(oldContacts.get(index));
-        List<ContactData> newContacts = app.contact().getList();
+        List<ContactData> newContacts = app.hbm().getContactsList();
         List<ContactData> expectedResult = new ArrayList<>(oldContacts);
         Comparator<ContactData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
@@ -34,12 +34,12 @@ public class RemoveContactTests extends TestBase {
 
     @Test
     void removeAllContacts() {
-        if (!app.contact().isContactPresent()) {
-            app.contact().createContact(new ContactData().withAddress("address").withFirstName("firstname").withLastName("lastname"));
+        if (app.hbm().getContactsCount() == 0) {
+            app.hbm().createContact(new ContactData("", "firstname", "address", "lastname"));
         }
         app.contact().openHomePage();
         app.contact().removeAllContacts();
         app.contact().openHomePage();
-        Assertions.assertEquals(0, app.contact().getCount());
+        Assertions.assertEquals(0, app.hbm().getContactsCount());
     }
 }

@@ -15,12 +15,11 @@ public class ContactModificationTests extends TestBase {
 
     @Test
     public void modifyContact() {
-        app.contact().openHomePage();
-
-        if (!app.contact().isContactPresent()) {
-            app.contact().createContact(new ContactData().withAddress("address").withFirstName("firstname").withLastName("lastname"));
+        if (app.hbm().getContactsCount() == 0) {
+            app.hbm().createContact(new ContactData("", "firstname", "address", "lastname"));
         }
-        List<ContactData> oldContacts = app.contact().getList();
+        app.contact().openHomePage();
+        List<ContactData> oldContacts = app.hbm().getContactsList();
         var rnd = new Random();
         var index = rnd.nextInt(oldContacts.size());
         var testData = new ContactData().withFirstName("11111111").withAddress(oldContacts.get(index).address()).withLastName(oldContacts.get(index).lastName());
