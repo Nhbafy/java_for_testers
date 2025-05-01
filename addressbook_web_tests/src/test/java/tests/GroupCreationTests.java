@@ -6,6 +6,7 @@ import model.GroupData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import utils.Utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +22,13 @@ public class GroupCreationTests extends TestBase {
         return new ArrayList<>(value);
     }
 
+    public static List<GroupData> singleRandomGroup(){
+       return List.of(new GroupData()
+                .withName(Utils.randomString(10))
+                .withHeader(Utils.randomString(20))
+                .withFooter(Utils.randomString(30)));
+    }
+
 
     public static List<GroupData> negativeGroupProvider() {
         List<GroupData> result = new ArrayList<>(List.of(new GroupData("", "", "", "ggg'")));
@@ -28,19 +36,22 @@ public class GroupCreationTests extends TestBase {
     }
 
     @ParameterizedTest
-    @MethodSource("groupProvider")
+    @MethodSource("singleRandomGroup")
     public void canCreateGroup(GroupData group) {
-        List<GroupData> oldGroups = app.groups().getList();
+        List<GroupData> oldGroups = app.hbm().getGroupList();
         app.groups().createGroup(group);
-        List<GroupData> newGroups = app.groups().getList();
+        List<GroupData> newGroups = app.hbm().getGroupList();
         var expectedList = new ArrayList<>(oldGroups);
         Comparator<GroupData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };
         newGroups.sort(compareById);
-        expectedList.add(group.withId(newGroups.get(newGroups.size()-1).id()).withFooter("").withHeader(""));
+        var maxId = newGroups.get(newGroups.size()-1).id();
+        expectedList.add(group.withId(maxId));
         expectedList.sort(compareById);
         Assertions.assertEquals(expectedList, newGroups);
+
+ //       var newUiGroups = app.groups().getList();
     }
 
     @ParameterizedTest

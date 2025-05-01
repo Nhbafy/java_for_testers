@@ -2,7 +2,6 @@ package manager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -15,6 +14,10 @@ public class ApplicationManager {
     private GroupHelper groups;
     private HelperBase helperBase;
     private ContactHelper contactHelper;
+
+    private HibernateHelper hbm;
+
+    private JdbcHelper jdbc;
 
     public void init(String browser, Properties properties) {
         if (driver == null) {
@@ -64,9 +67,23 @@ public class ApplicationManager {
         try {
             driver.findElement(locator);
             return true;
-        } catch (NoSuchElementException e) {
+        } catch (Exception e) {
             return false;
         }
+    }
+
+    public JdbcHelper jdbc() {
+        if (jdbc == null) {
+            jdbc = new JdbcHelper(this);
+        }
+        return jdbc;
+    }
+
+    public HibernateHelper hbm() {
+        if (hbm == null) {
+            hbm = new HibernateHelper(this);
+        }
+        return hbm;
     }
 
 }
