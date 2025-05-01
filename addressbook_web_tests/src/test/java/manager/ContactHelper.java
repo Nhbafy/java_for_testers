@@ -134,4 +134,23 @@ public class ContactHelper extends HelperBase {
         sendKeys(By.name("firstname"), testData.firstName());
         clickElementByLocator(By.name("update"));
     }
+
+    public void selectGroupFilter(GroupData group) {
+        new Select(manager.driver.findElement(By.name("group"))).selectByValue(group.id());
+    }
+
+    public void selectContact(ContactData contact) {
+        clickElementByLocator(By.cssSelector(String.format("input[id='%s']", contact.id())));
+    }
+
+    public void removeFromGroup() {
+        clickElementByLocator(By.name("remove"));
+    }
+    public void selectAddToGroup(GroupData group) {
+        new Select(manager.driver.findElement(By.name("to_group"))).selectByValue(group.id());
+    }
+
+    public void addToGroup() {
+        clickElementByLocator(By.name("add"));
+    }
 }
