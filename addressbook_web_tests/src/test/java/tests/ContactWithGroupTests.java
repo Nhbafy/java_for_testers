@@ -1,7 +1,9 @@
 package tests;
 
+import manager.JdbcHelper;
 import model.ContactData;
 import model.GroupData;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import utils.Utils;
 
@@ -26,22 +28,41 @@ public class ContactWithGroupTests extends TestBase {
         if (app.hbm().getGroupCount() == 0) {
             app.hbm().createGroup(groupData);
         }
-        var group = app.hbm().getGroupList().get(0);
-        var contact = app.hbm().getContactsList().get(0);
+        var groupList = app.hbm().getGroupList();
+        var contactList = app.hbm().getContactsList();
+        ContactData contact = null;
+        GroupData group = null;
+        for (GroupData value : groupList) {
+            for (ContactData data : contactList) {
+                if (!JdbcHelper.checkBunch(value, data)) {
+                    group = value;
+                    contact = data;
+                    break;
+                }
+            }
+            if (contact != null) break;
+        }
+        if (contact == null) {
+            app.hbm().createContact(contactData);
+            groupList = app.hbm().getGroupList();
+            contactList = app.hbm().getContactsList();
+            for (GroupData value : groupList) {
+                for (ContactData data : contactList) {
+                    if (!JdbcHelper.checkBunch(value, data)) {
+                        group = value;
+                        contact = data;
+                        break;
+                    }
+                }
+                if (contact != null) break;
+            }
+        }
         app.contact().openHomePage();
         app.contact().selectContact(contact);
         app.contact().selectAddToGroup(group);
         app.contact().addToGroup();
+        Assertions.assertTrue(JdbcHelper.checkBunch(group, contact), "Связка не добавилась");
 
-        try (var conn = DriverManager.getConnection("jdbc:mysql://localhost/addressbook", "root", "");
-             var statement = conn.createStatement();
-             var result = statement.executeQuery(String.format("SELECT * FROM address_in_groups WHERE id = \"%s\" AND group_id = \"%s\"", contact.id(), group.id()))) {
-            if (!result.next()) {
-                throw new IllegalStateException("Связка не добавилась");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Test
@@ -63,19 +84,13 @@ public class ContactWithGroupTests extends TestBase {
 
         var group = app.hbm().getGroupList().get(0);
         var contact = app.hbm().getContactsList().get(0);
+        if (!JdbcHelper.checkBunch(group, contact)) {
+            JdbcHelper.createContactGroupBunch(group,contact);
+        }
         app.contact().openHomePage();
         app.contact().selectGroupFilter(group);
         app.contact().selectContact(contact);
         app.contact().removeFromGroup();
-
-        try (var conn = DriverManager.getConnection("jdbc:mysql://localhost/addressbook", "root", "");
-             var statement = conn.createStatement();
-             var result = statement.executeQuery(String.format("SELECT * FROM address_in_groups WHERE id = \"%s\" AND group_id = \"%s\"", contact.id(), group.id()))) {
-            if (result.next()) {
-                throw new IllegalStateException("Связка не добавилась");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        Assertions.assertFalse(JdbcHelper.checkBunch(group, contact), "Связка не удалилась");
     }
 }

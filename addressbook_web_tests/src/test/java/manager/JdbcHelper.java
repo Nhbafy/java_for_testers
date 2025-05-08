@@ -1,5 +1,6 @@
 package manager;
 
+import model.ContactData;
 import model.GroupData;
 
 import java.sql.DriverManager;
@@ -10,6 +11,28 @@ import java.util.List;
 public class JdbcHelper extends HelperBase {
     public JdbcHelper(ApplicationManager manager) {
         super(manager);
+    }
+
+    public static boolean checkBunch(GroupData group, ContactData contact) {
+        try (var conn = DriverManager.getConnection("jdbc:mysql://localhost/addressbook", "root", "");
+             var statement = conn.createStatement();
+             var result = statement.executeQuery(String.format("SELECT * FROM address_in_groups WHERE id = \"%s\" AND group_id = \"%s\"", contact.id(), group.id()))) {
+            return result.next();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void createContactGroupBunch(GroupData group, ContactData contact) {
+        try (var conn = DriverManager.getConnection("jdbc:mysql://localhost/addressbook","root",""))
+        {
+            String sql = String.format("INSERT INTO address_in_groups VALUES (0,\"%s\",\"%s\",\"%s\",\"%s\",\"%s\")",
+                    contact.id(), group.id(),java.time.LocalDateTime.now(),java.time.LocalDateTime.now(),java.time.LocalDateTime.now());
+            conn.createStatement().executeUpdate(sql);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<GroupData> getGroupList() {
