@@ -1,10 +1,8 @@
 package tests;
 
 import model.ContactData;
-import model.GroupData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -16,7 +14,7 @@ public class ContactModificationTests extends TestBase {
     @Test
     public void modifyContact() {
         if (app.hbm().getContactsCount() == 0) {
-            app.hbm().createContact(new ContactData("", "firstname", "address", "lastname"));
+            app.hbm().createContact(new ContactData("", "firstname", "address", "lastname", "", "", "", "", "", "", "", ""));
         }
         app.contact().openHomePage();
         List<ContactData> oldContacts = app.hbm().getContactsList();

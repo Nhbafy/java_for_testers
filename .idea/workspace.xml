@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="fd9b816f-135e-40d8-ab07-31d5cb018bf2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/manager/JdbcHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/manager/JdbcHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/tests/ContactWithGroupTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/tests/ContactWithGroupTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/manager/ContactHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/manager/ContactHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/manager/HibernateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/manager/HibernateHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/manager/hbm/ContactRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/manager/hbm/ContactRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/model/ContactData.java" beforeDir="false" afterPath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/model/ContactData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/tests/ContactModificationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/tests/ContactModificationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/tests/RemoveContactTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/tests/RemoveContactTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,8 +117,8 @@
       <recent name="ApplicationManager" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ContactWithGroupTests.removeContactFromGroup">
-    <configuration name="ContactWithGroupTests.addContactToGroup" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ContactInfoTests.testInfo">
+    <configuration name="ContactInfoTests.testInfo" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/addressbook_web_tests" />
@@ -127,7 +131,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;tests.ContactWithGroupTests.addContactToGroup&quot;" />
+            <option value="&quot;tests.ContactInfoTests.testInfo&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -138,7 +142,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="ContactWithGroupTests.removeContactFromGroup" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ContactInfoTests.testPhones" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/addressbook_web_tests" />
@@ -151,7 +155,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;tests.ContactWithGroupTests.removeContactFromGroup&quot;" />
+            <option value="&quot;tests.ContactInfoTests.testPhones&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -162,7 +166,7 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="GroupCreationTests.canCreateGroup" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ContactModificationTests.modifyContact" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/addressbook_web_tests" />
@@ -175,7 +179,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;tests.GroupCreationTests.canCreateGroup&quot;" />
+            <option value="&quot;tests.ContactModificationTests.modifyContact&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -186,10 +190,10 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="GroupDeletedTest.canRemoveAllGroups" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ReverseChecks.testSort" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/addressbook_web_tests" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/sandbox" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
@@ -199,7 +203,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;tests.GroupDeletedTest.canRemoveAllGroups&quot;" />
+            <option value="&quot;ReverseChecks.testSort&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -210,10 +214,10 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="RemoveContactTests.removeAllContacts" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ReverseChecks.testSqrt" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/addressbook_web_tests" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/sandbox" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
@@ -223,7 +227,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;tests.RemoveContactTests.removeAllContacts&quot;" />
+            <option value="&quot;ReverseChecks.testSqrt&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -248,19 +252,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.ContactWithGroupTests.addContactToGroup" />
-      <item itemvalue="Gradle.GroupCreationTests.canCreateGroup" />
-      <item itemvalue="Gradle.ContactWithGroupTests.removeContactFromGroup" />
-      <item itemvalue="Gradle.GroupDeletedTest.canRemoveAllGroups" />
-      <item itemvalue="Gradle.RemoveContactTests.removeAllContacts" />
+      <item itemvalue="Gradle.ContactInfoTests.testInfo" />
+      <item itemvalue="Gradle.ContactInfoTests.testPhones" />
+      <item itemvalue="Gradle.ContactModificationTests.modifyContact" />
+      <item itemvalue="Gradle.ReverseChecks.testSort" />
+      <item itemvalue="Gradle.ReverseChecks.testSqrt" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ContactWithGroupTests.removeContactFromGroup" />
-        <item itemvalue="Gradle.ContactWithGroupTests.addContactToGroup" />
-        <item itemvalue="Gradle.GroupCreationTests.canCreateGroup" />
-        <item itemvalue="Gradle.GroupDeletedTest.canRemoveAllGroups" />
-        <item itemvalue="Gradle.RemoveContactTests.removeAllContacts" />
+        <item itemvalue="Gradle.ContactInfoTests.testInfo" />
+        <item itemvalue="Gradle.ContactModificationTests.modifyContact" />
+        <item itemvalue="Gradle.ContactInfoTests.testPhones" />
+        <item itemvalue="Gradle.ReverseChecks.testSort" />
+        <item itemvalue="Gradle.ReverseChecks.testSqrt" />
       </list>
     </recent_temporary>
   </component>
@@ -293,13 +297,13 @@
           <line>89</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/addressbook_web_tests/src/test/java/manager/ContactHelper.java</url>
+          <line>134</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="GradleRunConfiguration">
-        <watch expression="java.time.LocalDateTime.now()" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

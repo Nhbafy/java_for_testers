@@ -2,12 +2,15 @@ package manager;
 
 import model.ContactData;
 import model.GroupData;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ContactHelper extends HelperBase {
 
@@ -72,7 +75,7 @@ public class ContactHelper extends HelperBase {
     }
 
     private void selectGroup(GroupData group) {
-       new Select(manager.driver.findElement(By.name("new_group"))).selectByValue(group.id());
+        new Select(manager.driver.findElement(By.name("new_group"))).selectByValue(group.id());
     }
 
     private void dropdownElementByLocator(By dropdownLocator, By valueLocator) {
@@ -90,7 +93,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void openHomePage() {
-            clickElementByLocator(By.linkText("home"));
+        clickElementByLocator(By.linkText("home"));
     }
 
     public boolean isContactPresent() {
@@ -128,9 +131,9 @@ public class ContactHelper extends HelperBase {
         return contacts;
     }
 
-    public void modifyContact(ContactData testData,int index) {
+    public void modifyContact(ContactData testData, int index) {
         openHomePage();
-        clickElementByLocator(By.xpath(String.format("//tr[%s]/td[8]",index+2)));
+        clickElementByLocator(By.xpath(String.format("//tr[%s]/td[8]", index + 2)));
         sendKeys(By.name("firstname"), testData.firstName());
         clickElementByLocator(By.name("update"));
     }
@@ -146,11 +149,73 @@ public class ContactHelper extends HelperBase {
     public void removeFromGroup() {
         clickElementByLocator(By.name("remove"));
     }
+
     public void selectAddToGroup(GroupData group) {
         new Select(manager.driver.findElement(By.name("to_group"))).selectByValue(group.id());
     }
 
     public void addToGroup() {
         clickElementByLocator(By.name("add"));
+    }
+
+    public String getPhones(ContactData contact) {
+        return manager.driver.findElement(By.xpath(String.format("//*[@id=\"%s\"]/../../td[6]", contact.id()))).getText();
+    }
+
+    public String getAddress(ContactData contact) {
+        return manager.driver.findElement(By.xpath(String.format("//*[@id=\"%s\"]/../../td[4]", contact.id()))).getText();
+    }
+    public String getEmails(ContactData contact) {
+        return manager.driver.findElement(By.xpath(String.format("//*[@id=\"%s\"]/../../td[5]", contact.id()))).getText();
+    }
+
+    public Map<String, String> getPhones() {
+        var result = new HashMap<String, String>();
+        List<WebElement> rows = manager.driver.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            var id = row.findElement(By.tagName("input")).getAttribute("id");
+            var phones = row.findElements(By.tagName("td")).get(5).getText();
+            result.put(id, phones);
+        }
+        return result;
+    }
+
+    public Map<String, String> getAddress() {
+        var result = new HashMap<String, String>();
+        List<WebElement> rows = manager.driver.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            var id = row.findElement(By.tagName("input")).getAttribute("id");
+            var address = row.findElements(By.tagName("td")).get(3).getText();
+            result.put(id, address);
+        }
+        return result;
+    }
+
+    public Map<String, String> getEmails() {
+        var result = new HashMap<String, String>();
+        List<WebElement> rows = manager.driver.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            var id = row.findElement(By.tagName("input")).getAttribute("id");
+            var address = row.findElements(By.tagName("td")).get(4).getText();
+            result.put(id, address);
+        }
+        return result;
+    }
+
+    public void compareRows(ContactData contact) {
+        openModifyPage(contact);
+       Assertions.assertEquals(contact.home(),manager.driver.findElement(By.name("home")).getAttribute("value"),"incorrect home");
+       Assertions.assertEquals(contact.work(),manager.driver.findElement(By.name("work")).getAttribute("value"),"incorrect work");
+       Assertions.assertEquals(contact.fax(),manager.driver.findElement(By.name("fax")).getAttribute("value"),"incorrect fax");
+       Assertions.assertEquals(contact.mobile(),manager.driver.findElement(By.name("mobile")).getAttribute("value"),"incorrect mobile");
+       Assertions.assertEquals(contact.address(),manager.driver.findElement(By.name("address")).getAttribute("value"),"incorrect address");
+       Assertions.assertEquals(contact.email(),manager.driver.findElement(By.name("email")).getAttribute("value"),"incorrect email");
+       Assertions.assertEquals(contact.email2(),manager.driver.findElement(By.name("email2")).getAttribute("value"),"incorrect email2");
+       Assertions.assertEquals(contact.email3(),manager.driver.findElement(By.name("email3")).getAttribute("value"),"incorrect email3");
+    }
+
+    private void openModifyPage(ContactData contact) {
+        openHomePage();
+        clickElementByLocator(By.xpath(String.format("//*[@id=\"%s\"]/../../td[8]", contact.id())));
     }
 }
