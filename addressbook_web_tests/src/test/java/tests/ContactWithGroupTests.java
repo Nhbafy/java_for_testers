@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import utils.Utils;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
 public class ContactWithGroupTests extends TestBase {
 
     @Test
@@ -29,40 +26,16 @@ public class ContactWithGroupTests extends TestBase {
             app.hbm().createGroup(groupData);
         }
         var groupList = app.hbm().getGroupList();
-        var contactList = app.hbm().getContactsList();
-        ContactData contact = null;
-        GroupData group = null;
-        for (GroupData value : groupList) {
-            for (ContactData data : contactList) {
-                if (!JdbcHelper.checkBunch(value, data)) {
-                    group = value;
-                    contact = data;
-                    break;
-                }
-            }
-            if (contact != null) break;
-        }
-        if (contact == null) {
+        var contactList = app.jdbc().getContactsWithoutGroups();
+        if (contactList.size()==0){
             app.hbm().createContact(contactData);
-            groupList = app.hbm().getGroupList();
-            contactList = app.hbm().getContactsList();
-            for (GroupData value : groupList) {
-                for (ContactData data : contactList) {
-                    if (!JdbcHelper.checkBunch(value, data)) {
-                        group = value;
-                        contact = data;
-                        break;
-                    }
-                }
-                if (contact != null) break;
-            }
+            contactList = app.jdbc().getContactsWithoutGroups();
         }
         app.contact().openHomePage();
-        app.contact().selectContact(contact);
-        app.contact().selectAddToGroup(group);
+        app.contact().selectContact(contactList.get(0));
+        app.contact().selectAddToGroup(groupList.get(0));
         app.contact().addToGroup();
-        Assertions.assertTrue(JdbcHelper.checkBunch(group, contact), "Связка не добавилась");
-
+        Assertions.assertTrue(JdbcHelper.checkBunch(groupList.get(0), contactList.get(0)), "Связка не добавилась");
     }
 
     @Test

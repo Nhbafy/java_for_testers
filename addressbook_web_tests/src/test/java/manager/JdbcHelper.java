@@ -68,4 +68,19 @@ public class JdbcHelper extends HelperBase {
             throw new RuntimeException(e);
         }
     }
+
+    public List<ContactData> getContactsWithoutGroups() {
+        var idList = new ArrayList<ContactData>();
+        try (var conn = DriverManager.getConnection("jdbc:mysql://localhost/addressbook", "root", "");
+             var statement = conn.createStatement();
+             var result = statement.executeQuery("SELECT *, ab.id as contactId FROM address_in_groups aig right join addressbook ab on ab.id = aig.id where aig.id is null")) {
+            while (result.next()) {
+                idList.add(new ContactData()
+                        .withId(result.getString("contactId")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return idList;
+    }
 }
