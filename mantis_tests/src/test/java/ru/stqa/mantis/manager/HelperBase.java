@@ -19,8 +19,8 @@ public class HelperBase {
         manager.driver().findElement(locator).sendKeys(keys);
     }
 
-    protected boolean isElementPresent(By locator){
-       return manager.driver().findElements(locator).size()>0;
+    protected boolean isElementPresent(By locator) {
+        return manager.driver().findElements(locator).size() > 0;
     }
 
 }
