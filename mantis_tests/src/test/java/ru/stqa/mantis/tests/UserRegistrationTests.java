@@ -29,4 +29,25 @@ public class UserRegistrationTests extends TestBase {
         Assertions.assertTrue(app.http().isLoggedIn());
     }
 
+    @Test
+    void canApiRegisterUser() {
+        String username = Utils.randomString(8);
+        String password = "password";
+        var email = String.format("%s@localhost", username);
+        //создать адрес на почтовом сервере (JamesHelper)
+        app.jamesApiHelper().addUser(email,password);
+        //заполняем форму и отправляем (браузер)
+        app.rest().createUser(username,password);
+        //получаем почту (mailHelper)
+        var inbox = app.mail().receive(email, password, Duration.ofSeconds(10));
+        //извлечь ссылку
+        String url = app.create().getUrl(inbox);
+        //проходим по ссылке и завершаем регистрацию (браузер)
+        app.driver().get(url);
+        app.create().confirmCreate(username, password);
+        //проверяем, что пользователь может залогиниться (Http)
+        app.http().login(username, password);
+        Assertions.assertTrue(app.http().isLoggedIn());
+    }
+
 }

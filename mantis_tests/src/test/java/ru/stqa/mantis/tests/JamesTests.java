@@ -8,4 +8,13 @@ public class JamesTests extends TestBase {
     void canCreateUser() {
         app.jamesCli().addUser(String.format("%s@localhost", Utils.randomString(8)), "password");
     }
+
+    @Test
+    void apiCreateUser()
+    {
+        var email = String.format("%s@localhost",Utils.randomString(5));
+        var password = "password";
+        app.jamesApiHelper().addUser(email,password);
+
+    }
 }
