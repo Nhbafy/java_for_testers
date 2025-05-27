@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fd9b816f-135e-40d8-ab07-31d5cb018bf2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addressbook_web_tests/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/addressbook_web_tests/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addressbook_web_tests/contacts.json" beforeDir="false" afterPath="$PROJECT_DIR$/addressbook_web_tests/contacts.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/manager/ContactHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/addressbook_web_tests/src/test/java/manager/ContactHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mantis_tests/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/mantis_tests/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mantis_tests/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mantis_tests/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mantis_tests/src/test/java/ru/stqa/mantis/manager/ApplicationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/mantis_tests/src/test/java/ru/stqa/mantis/manager/ApplicationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mantis_tests/src/test/java/ru/stqa/mantis/tests/JamesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/mantis_tests/src/test/java/ru/stqa/mantis/tests/JamesTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mantis_tests/src/test/java/ru/stqa/mantis/tests/UserRegistrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/mantis_tests/src/test/java/ru/stqa/mantis/tests/UserRegistrationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,11 +152,11 @@
       <recent name="ru.stqa.mantis.manager" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.UserRegistrationTests.canApiRegisterUser">
-    <configuration name="IssueCreationTests.canCreateIssue" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ContactInfoTests">
+    <configuration name="ContactInfoTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/mantis_tests" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/addressbook_web_tests" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
@@ -167,7 +166,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.stqa.mantis.tests.IssueCreationTests.canCreateIssue&quot;" />
+            <option value="&quot;tests.ContactInfoTests&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -178,10 +177,10 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="JamesTests.apiCreateUser" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ContactInfoTests.testInfo" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/mantis_tests" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/addressbook_web_tests" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
@@ -191,7 +190,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.stqa.mantis.tests.JamesTests.apiCreateUser&quot;" />
+            <option value="&quot;tests.ContactInfoTests.testInfo&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -202,10 +201,10 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="UserRegistrationTests.canApiRegisterUser" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ContactModificationTests.modifyContact" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/mantis_tests" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/addressbook_web_tests" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
@@ -215,7 +214,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.stqa.mantis.tests.UserRegistrationTests.canApiRegisterUser&quot;" />
+            <option value="&quot;tests.ContactModificationTests.modifyContact&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -226,7 +225,31 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="addressbook_web_tests [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CreateContactTests.createContact" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/addressbook_web_tests" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;tests.CreateContactTests.createContact&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
+    </configuration>
+    <configuration name="addressbook_web_tests [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/addressbook_web_tests" />
@@ -237,29 +260,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="buildDependents" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
-      <method v="2" />
-    </configuration>
-    <configuration name="addressbook_web_tests [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/addressbook_web_tests" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
+            <option value="clean" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -284,19 +285,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.IssueCreationTests.canCreateIssue" />
-      <item itemvalue="Gradle.JamesTests.apiCreateUser" />
-      <item itemvalue="Gradle.UserRegistrationTests.canApiRegisterUser" />
-      <item itemvalue="Gradle.addressbook_web_tests [buildDependents]" />
-      <item itemvalue="Gradle.addressbook_web_tests [build]" />
+      <item itemvalue="Gradle.ContactInfoTests" />
+      <item itemvalue="Gradle.ContactInfoTests.testInfo" />
+      <item itemvalue="Gradle.ContactModificationTests.modifyContact" />
+      <item itemvalue="Gradle.CreateContactTests.createContact" />
+      <item itemvalue="Gradle.addressbook_web_tests [clean]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.UserRegistrationTests.canApiRegisterUser" />
-        <item itemvalue="Gradle.IssueCreationTests.canCreateIssue" />
-        <item itemvalue="Gradle.addressbook_web_tests [buildDependents]" />
-        <item itemvalue="Gradle.addressbook_web_tests [build]" />
-        <item itemvalue="Gradle.JamesTests.apiCreateUser" />
+        <item itemvalue="Gradle.ContactInfoTests" />
+        <item itemvalue="Gradle.CreateContactTests.createContact" />
+        <item itemvalue="Gradle.addressbook_web_tests [clean]" />
+        <item itemvalue="Gradle.ContactModificationTests.modifyContact" />
+        <item itemvalue="Gradle.ContactInfoTests.testInfo" />
       </list>
     </recent_temporary>
   </component>
@@ -325,14 +326,14 @@
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/addressbook_web_tests/src/test/java/tests/ContactWithGroupTests.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/addressbook_web_tests/src/test/java/manager/ContactHelper.java</url>
           <line>134</line>
           <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/addressbook_web_tests/src/test/java/tests/CreateContactTests.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="72" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
